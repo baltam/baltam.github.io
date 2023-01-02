@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"baltam.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一起来搭建博客吧！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github_Hexo_从零开始的个人博客搭建">
+<meta property="og:url" content="http://baltam.github.io/2020/09/26/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Baltam&#39;s Blog">
+<meta property="og:description" content="一起来搭建博客吧！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/baltam/tupian/raw/master/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%94%99%E8%AF%AF1.png">
+<meta property="article:published_time" content="2020-09-26T10:27:41.000Z">
+<meta property="article:modified_time" content="2023-01-02T03:29:49.091Z">
+<meta property="article:author" content="baltam">
+<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/baltam/tupian/raw/master/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%94%99%E8%AF%AF1.png">
+
+<link rel="canonical" href="http://baltam.github.io/2020/09/26/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Github_Hexo_从零开始的个人博客搭建 | Baltam's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Baltam's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">云青青兮欲雨，水澹澹兮生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://baltam.github.io/2020/09/26/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="baltam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Baltam's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Github_Hexo_从零开始的个人博客搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-26 18:27:41" itemprop="dateCreated datePublished" datetime="2020-09-26T18:27:41+08:00">2020-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-02 11:29:49" itemprop="dateModified" datetime="2023-01-02T11:29:49+08:00">2023-01-02</time>
+              </span>
+
+          
+            <div class="post-description">一起来搭建博客吧！</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="为什么要搭建博客"><a href="#为什么要搭建博客" class="headerlink" title="为什么要搭建博客"></a>为什么要搭建博客</h1><ul>
+<li><del>因为太菜</del></li>
+<li>因为热爱分享</li>
+<li>对所学知识进行总结</li>
+</ul>
+<h1 id="如何使用github-hexo搭建博客"><a href="#如何使用github-hexo搭建博客" class="headerlink" title="如何使用github+hexo搭建博客"></a>如何使用github+hexo搭建博客</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><ul>
+<li>什么是nodejs，为什么要安装</li>
+<li>如何安装</li>
+<li>相关安装命令<h3 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h3><h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3></li>
+<li>什么是git<br>git是目前最先进的分布式版本控制系统,他能够跟踪所有文本文件的内容改动和文件大小变化，比如txt文件、md文件、网页、程序代码等。同时他也能跟踪图片、音频、视频等文件的改动，但由于这些文件本质属于二进制编码，因此具体改了什么地方，git是不知道的。</li>
+<li>git语法学习<br>git教程有很多，下面是经过整理后的个人非常推荐的网站:</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tugenhua0707/p/4050072.html">git使用教程</a>讲解非常详细，强烈推荐先看这个</li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/progit/">progit第一版</a></li>
+<li>git常见语法总结<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件的产生、读取、写入、复制、提交</span></span><br><span class="line"><span class="comment"># 将当前所在目录变成git可以管理的仓库（repository）</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 查看当前分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="comment"># 创建一个名称为taishiji的分支 </span></span><br><span class="line">git branch taishiji</span><br><span class="line"><span class="comment"># head指针指向source，说人话就是切换到source分支</span></span><br><span class="line">git checkout -b <span class="built_in">source</span> </span><br><span class="line"><span class="comment"># 产生xxx文件的副本，并将该文件副本移动到暂存区（stage）中</span></span><br><span class="line">git add xxx </span><br><span class="line"><span class="comment"># 查看文件具体修改内容</span></span><br><span class="line">git diff readme.md</span><br><span class="line"><span class="comment"># 查看文件修改记录 空格向下 b向上</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># 以非常漂亮的格式，通过只查看注释来查看文件的修改</span></span><br><span class="line">git <span class="built_in">log</span> –pretty=oneline</span><br><span class="line"><span class="comment"># 查看当前所处分支，以及是否有文件内容已经修改，但并未提交的情况</span></span><br><span class="line"><span class="comment"># 在提交文件之前和提交之后，推荐先使用该命令进行核对和确认</span></span><br><span class="line">git status</span><br><span class="line"><span class="comment"># 取出暂存区中的文件副本，并将其保存到git仓库中，同时附上修改注释“提交readme.md文件”</span></span><br><span class="line">git commit -m <span class="string">&quot;提交readme.md文件&quot;</span></span><br><span class="line"><span class="comment"># 将版本回退到上一个版本</span></span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"><span class="comment"># 将版本回退到上上个版本</span></span><br><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<h2 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h2><h3 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h3><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3></li>
+<li>什么是hexo，为什么要安装</li>
+<li>如何安装</li>
+<li>hexo相关命令<h3 id="预览搭建好的基本博客"><a href="#预览搭建好的基本博客" class="headerlink" title="预览搭建好的基本博客"></a>预览搭建好的基本博客</h3><h2 id="美化博客"><a href="#美化博客" class="headerlink" title="美化博客"></a>美化博客</h2><h3 id="主题下载和筛选"><a href="#主题下载和筛选" class="headerlink" title="主题下载和筛选"></a>主题下载和筛选</h3><h3 id="推荐主题：Next"><a href="#推荐主题：Next" class="headerlink" title="推荐主题：Next"></a>推荐主题：Next</h3><h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><h3 id="初识markdown"><a href="#初识markdown" class="headerlink" title="初识markdown"></a>初识markdown</h3></li>
+<li>*markdown**是一种标记语言，这种标记语言不需要掌握复杂的html语言编程，仅仅通过简单的语法，就可以完成文字的撰写、图片的添加甚至音频的插入，非常适合于完成博客内容的撰写和网页的搭建。<h3 id="markdown语法的学习"><a href="#markdown语法的学习" class="headerlink" title="markdown语法的学习"></a>markdown语法的学习</h3>具体语法可参照<a target="_blank" rel="noopener" href="https://www.appinn.com/markdown/#%E9%93%BE%E6%8E%A5">Markdown 语法说明 (简体中文版)</a>,大约半小时左右就可以快速上手入门。这里就简单展示一下一些常用的语法<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一级标题</span></span><br><span class="line"><span class="comment">## 二级标题</span></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line">[原图是如何映射为特征图的呢](https://blog.csdn.net/jingtingxu369/article/details/<span class="number">84800154</span>) 插入外部网页链接</span><br></pre></td></tr></table></figure>
+<h1 id="搭建过程中遇到的坑（都是泪）"><a href="#搭建过程中遇到的坑（都是泪）" class="headerlink" title="搭建过程中遇到的坑（都是泪）"></a>搭建过程中遇到的坑（都是泪）</h1><h2 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h2><img src="https://github.com/baltam/tupian/raw/master/Github_Hexo_%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%94%99%E8%AF%AF1.png" alt="由于代理问题导致的错误"></li>
+</ul>
+<h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h2 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h2><h3 id="错误原因-1"><a href="#错误原因-1" class="headerlink" title="错误原因"></a>错误原因</h3><h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><h1 id="强迫症患者需要解决的问题"><a href="#强迫症患者需要解决的问题" class="headerlink" title="强迫症患者需要解决的问题"></a>强迫症患者需要解决的问题</h1><h2 id="不同的电脑上如何修改博客"><a href="#不同的电脑上如何修改博客" class="headerlink" title="不同的电脑上如何修改博客"></a>不同的电脑上如何修改博客</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21193762">使用hexo，如果换了电脑怎么更新博客？</a><h2 id="如何提高打字准确度"><a href="#如何提高打字准确度" class="headerlink" title="如何提高打字准确度"></a>如何提高打字准确度</h2><h2 id="寻找更简单的图床方法"><a href="#寻找更简单的图床方法" class="headerlink" title="寻找更简单的图床方法"></a>寻找更简单的图床方法</h2><h1 id="参考文献or网站"><a href="#参考文献or网站" class="headerlink" title="参考文献or网站"></a>参考文献or网站</h1></li>
+<li><a target="_blank" rel="noopener" href="https://baoyuzhang.github.io/2017/04/28/%E3%80%90Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E5%85%A8%E7%BA%AA%E5%BD%95%E3%80%91%EF%BC%88%E4%B8%80%EF%BC%89%E4%BD%BF%E7%94%A8Git%E5%92%8CGithub/">【Hexo搭建独立博客全纪录】（一）使用Git和Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://mumaxu.github.io/2018/12/09/GitHub-Hexo-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">GitHub-Hexo-从零开始搭建个人博客</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"># 博客搭建</a>
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/26/%E6%B5%8B%E8%AF%951/" rel="prev" title="测试1">
+      <i class="fa fa-chevron-left"></i> 测试1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/26/faster%20rcnn%E5%AE%8C%E5%85%A8%E8%A7%A3%E8%AF%BB/" rel="next" title="faster rcnn完全解读">
+      faster rcnn完全解读 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">为什么要搭建博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">如何使用github+hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nodejs"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8Cgithub"><span class="nav-number">2.1.2.</span> <span class="nav-text">注册github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85git"><span class="nav-number">2.1.3.</span> <span class="nav-text">安装git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.2.</span> <span class="nav-text">搭建个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">2.2.1.</span> <span class="nav-text">新建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E8%A7%88%E6%90%AD%E5%BB%BA%E5%A5%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.2.3.</span> <span class="nav-text">预览搭建好的基本博客</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.3.</span> <span class="nav-text">美化博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%BD%BD%E5%92%8C%E7%AD%9B%E9%80%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">主题下载和筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E4%B8%BB%E9%A2%98%EF%BC%9ANext"><span class="nav-number">2.3.2.</span> <span class="nav-text">推荐主题：Next</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.4.</span> <span class="nav-text">写博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E8%AF%86markdown"><span class="nav-number">2.4.1.</span> <span class="nav-text">初识markdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown%E8%AF%AD%E6%B3%95%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.4.2.</span> <span class="nav-text">markdown语法的学习</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%88%E9%83%BD%E6%98%AF%E6%B3%AA%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">搭建过程中遇到的坑（都是泪）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF1"><span class="nav-number">3.1.</span> <span class="nav-text">错误1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0"><span class="nav-number">3.1.1.</span> <span class="nav-text">错误原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.1.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF2"><span class="nav-number">3.2.</span> <span class="nav-text">错误2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">错误原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E8%BF%AB%E7%97%87%E6%82%A3%E8%80%85%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">强迫症患者需要解决的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E7%94%B5%E8%84%91%E4%B8%8A%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2"><span class="nav-number">4.1.</span> <span class="nav-text">不同的电脑上如何修改博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E6%89%93%E5%AD%97%E5%87%86%E7%A1%AE%E5%BA%A6"><span class="nav-number">4.2.</span> <span class="nav-text">如何提高打字准确度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E5%9B%BE%E5%BA%8A%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">寻找更简单的图床方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AEor%E7%BD%91%E7%AB%99"><span class="nav-number">5.</span> <span class="nav-text">参考文献or网站</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">baltam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">baltam</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
