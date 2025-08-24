@@ -117,14 +117,24 @@ darkmode: false
 # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
 # External url should start with http:// or https://
 menu:
-  home: / || home
-  about: /about/ || user
-  tags: /tags/ || tags
-  categories: /categories/ || th
-  archives: /archives/ || archive
+  # home: / || home
+  # about: /about/ || user
+  # tags: /tags/ || tags
+  # categories: /categories/ || th
+  # archives: /archives/ || archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
+  首页: / || home
+  论文解读: /categories/papers/ || book
+  数据集分析: /categories/datasets/ || database
+  阅读月报: /categories/reading-monthly/ || calendar
+  写作研究: /categories/writing/ || pencil
+  论文复现: /categories/reproduction/ || code
+  博客开发相关: /categories/blog-dev/ || wrench
+  分类: /categories/ || th
+  标签: /tags/ || tags
+  归档: /archives/ || archive
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
