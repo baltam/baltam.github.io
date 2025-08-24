@@ -106,3 +106,19 @@ deploy:
   type: git
   repo: https://github.com/baltam/baltam.github.io.git
   branch: master
+
+# 数学公式（KaTeX 引擎）
+math:
+  engine: katex
+  katex:
+    copy_tex: true
+
+# Mermaid
+mermaid:
+  enable: true
+
+# RSS / Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
