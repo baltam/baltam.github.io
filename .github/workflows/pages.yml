@@ -1,0 +1,39 @@
+﻿name: Deploy Hexo to Pages
+
+on:
+  push:
+    branches: [ taishiji ]   # ← 若你的默认分支不是 taishiji，请改成实际的默认分支名
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'        # 与本地一致，避免老依赖在 Node 22 报错
+          cache: 'npm'
+      - run: npm ci || npm i        # 有锁文件走 ci，没有则安装
+      - run: npx hexo generate      # 生成到 ./public
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
