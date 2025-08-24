@@ -9,10 +9,9 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.2.0"
+    "version": "7.3.0"
   },
   "dependencies": {
-    "hexo": "^5.0.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
@@ -22,5 +21,9 @@
     "hexo-renderer-marked": "^3.0.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0"
+  },
+  "devDependencies": {
+    "hexo": "^7.3.0",
+    "hexo-cli": "^4.3.2"
   }
 }
