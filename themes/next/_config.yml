@@ -509,11 +509,13 @@ math:
   # Default (true) will load mathjax / katex script on demand.
   # That is it only render those page which has `mathjax: true` in Front-matter.
   # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
-  per_page: true
+  # per_page: true
 
   # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
   mathjax:
     enable: false
+    per_page: true  # 允许单篇文章通过 `mathjax: true` 单独控制
+    # cdn: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # 加载 MathJax 3.x 资源（推荐 3.x 版本，兼容性更好）
     # See: https://mhchem.github.io/MathJax-mhchem/
     mhchem: false
 
