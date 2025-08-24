@@ -26,7 +26,6 @@ source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -67,8 +66,16 @@ index_generator:
   order_by: -date
 
 # Category & Tag
+category_dir: categories
 default_category: uncategorized
+# 为中文分类指定 URL slug，避免浏览器出现编码字符串
 category_map:
+  论文解读: papers
+  数据集分析: datasets
+  阅读月报: reading-monthly
+  写作研究: writing
+  论文复现: reproduction
+  博客开发相关: blog-dev
 tag_map:
 
 # Metadata elements
