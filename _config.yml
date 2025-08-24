@@ -107,18 +107,7 @@ deploy:
   repo: https://github.com/baltam/baltam.github.io.git
   branch: master
 
-# 数学公式（KaTeX 引擎）
-math:
-  engine: katex
-  katex:
-    copy_tex: true
-
-# Mermaid
-mermaid:
-  enable: true
-
-# RSS / Atom
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
+# Math (server-side, MathJax)
+mathjax:
+  single_dollars: true   # 允许 $...$ 作为行内公式
+  append_css: true       # 自动注入必要样式

@@ -25,6 +25,7 @@
   "devDependencies": {
     "hexo": "^7.3.0",
     "hexo-cli": "^4.3.2",
+    "hexo-filter-mathjax": "^0.9.1",
     "hexo-filter-mermaid-diagrams": "^1.0.5",
     "hexo-generator-feed": "^3.0.0",
     "hexo-math": "^5.0.0"
