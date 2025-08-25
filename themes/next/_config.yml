@@ -588,6 +588,15 @@ comments:
   # Lazyload all comment systems.
   lazyload: false
   # Modify texts or order for any navs, here are some examples.
+
+# 使 NexT 的评论模块默认选用 giscus（若你只启用这一种评论，active 可省略）
+# comments:
+#   active: giscus         # NexT 支持多评论系统切换；这里指定默认显示 giscus
+#   style: tabs            # 可选：tabs / buttons
+#   storage: true          # 记住访客上次选择
+#   lazyload: true         # 懒加载，提升首屏性能
+# ↑ 这一段是 NexT 评论总开关与样式控制，字段名来自 NexT 文档
+
   nav:
     #disqus:
     #  text: Load Disqus
@@ -660,6 +669,23 @@ gitalk:
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language:
+
+
+
+# giscus 专用配置（由 hexo-next-giscus 插件提供）
+# giscus:
+#   enable: true
+#   repo: baltam/baltam.github.io
+#   repo_id: "MDEwOlJlcG9zaXRvcnkyOTcwODA0Nzk="    # ← 填入从 giscus.app 复制的 repo_id
+#   category: Announcements  # ← 你的讨论分类名（如：Comments 或 General）
+#   category_id: "DIC_kwDOEbUWn84CujP7" # ← 填入从 giscus.app 复制的 category_id
+#   mapping: pathname
+#   reactions_enabled: 1
+#   emit_metadata: 0
+#   input_position: top
+#   theme: preferred_color_scheme
+#   lang: zh-CN
+#   loading: lazy
 
 
 # ---------------------------------------------------------------

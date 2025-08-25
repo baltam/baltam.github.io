@@ -121,3 +121,19 @@ deploy:
 mathjax:
   single_dollars: true   # 允许 $...$ 作为行内公式
   append_css: true       # 自动注入必要样式
+
+
+# 在站点根 _config.yml 里添加（或合并）
+# giscus:
+#   enable: true
+#   repo: baltam/baltam.github.io
+#   repo_id: MDEwOlJlcG9zaXRvcnkyOTcwODA0Nzk=
+#   category: General   # 或你自己建的 Comments
+#   category_id: DIC_kwDOEbUWn84CujP8
+#   mapping: pathname
+#   reactions_enabled: 1
+#   emit_metadata: 1
+#   theme: preferred_color_scheme
+#   lang: zh-CN
+#   input_position: bottom
+#   loading: lazy
